@@ -24,7 +24,7 @@ productsController.createProduct = async (req, res) => {
 
 productsController.updateProduct = async (req, res) => {
   const { product, quantity, price } = req.body;
-  await productModel.findOneAndUpdate(req.params.id, {
+  await productModel.findByIdAndUpdate(req.params.id, {
     product,
     quantity,
     price,
