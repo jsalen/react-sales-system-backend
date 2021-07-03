@@ -17,5 +17,13 @@
   "keywords": [],
   "author": "Joseph Salen",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsalen/react-teg-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsalen/react-teg-backend/issues"
+  },
+  "homepage": "https://github.com/jsalen/react-teg-backend#readme",
   "description": ""
 }
