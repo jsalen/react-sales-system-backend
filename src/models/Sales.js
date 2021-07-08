@@ -4,7 +4,7 @@ const saleSchema = new Schema({
   products: [
     {
       product: String,
-      quantity: Number,
+      qtyInCart: Number,
       price: Number,
     },
   ],
