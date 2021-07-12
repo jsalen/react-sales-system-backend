@@ -11,6 +11,19 @@ salesController.getSales = async (req, res) => {
   res.json(sales);
 };
 
+salesController.getSalesByDate = async (req, res) => {
+  const sales = await salesModel
+    .find({
+      $where: function () {
+        today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return this._id.getTimestamp() >= today;
+      },
+    })
+    .sort({ date: -1, _id: -1 });
+  res.json(sales);
+};
+
 salesController.createSale = async (req, res) => {
   const { products, totalPrice, date } = req.body;
   const newSale = new salesModel({
