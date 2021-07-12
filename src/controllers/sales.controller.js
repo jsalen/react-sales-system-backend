@@ -7,7 +7,7 @@ salesController.getSale = async (req, res) => {
 };
 
 salesController.getSales = async (req, res) => {
-  const sales = await salesModel.find();
+  const sales = await salesModel.find().sort({ date: -1 });
   res.json(sales);
 };
 
