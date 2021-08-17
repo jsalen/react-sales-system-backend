@@ -12,15 +12,18 @@ salesController.getSales = async (req, res) => {
 };
 
 salesController.getSalesByDate = async (req, res) => {
+  const date = new Date(req.params.date);
+  date.setHours(24, 0, 0, 0);
+
+  const dayBefore = new Date(date);
+  dayBefore.setDate(date.getDate() - 1);
+
   const sales = await salesModel
     .find({
-      $where: function () {
-        today = new Date();
-        today.setHours(0, 0, 0, 0);
-        return this._id.getTimestamp() >= today;
-      },
+      date: { $gte: dayBefore, $lte: date },
     })
     .sort({ date: -1, _id: -1 });
+
   res.json(sales);
 };
 
