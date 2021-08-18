@@ -1,26 +1,15 @@
-const userController = {};
-const userModel = require("../models/User");
-
-userController.getUsers = async (req, res) => {
-  const users = await userModel.find();
-  res.json(users);
+exports.allAccess = (req, res) => {
+  res.status(200).send("Public Content.");
 };
 
-userController.getUser = async (req, res) => {
-  const user = await userModel.findById(req.params.id);
-  res.json(user);
+exports.userBoard = (req, res) => {
+  res.status(200).send("User Content.");
 };
 
-userController.createUser = async (req, res) => {
-  const { username } = req.body;
-  const newUser = new userModel({ username });
-  await newUser.save();
-  res.json(username);
+exports.adminBoard = (req, res) => {
+  res.status(200).send("Admin Content.");
 };
 
-userController.deleteUser = async (req, res) => {
-  await userModel.findByIdAndDelete(req.params.id);
-  res.json({ message: "user deleted" });
+exports.sellerBoard = (req, res) => {
+  res.status(200).send("Seller Content.");
 };
-
-module.exports = userController;
