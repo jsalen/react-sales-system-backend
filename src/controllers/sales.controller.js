@@ -28,11 +28,12 @@ salesController.getSalesByDate = async (req, res) => {
 };
 
 salesController.createSale = async (req, res) => {
-  const { products, totalPrice, date } = req.body;
+  const { products, totalPrice, date, soldBy } = req.body;
   const newSale = new salesModel({
     products,
     totalPrice,
     date,
+    soldBy,
   });
   await newSale.save();
   res.json(newSale);

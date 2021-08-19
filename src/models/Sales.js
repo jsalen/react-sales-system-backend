@@ -13,6 +13,7 @@ const saleSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  soldBy: String,
 });
 
 module.exports = model("Sales", saleSchema);
