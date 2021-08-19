@@ -10,14 +10,6 @@ module.exports = function (app) {
     next();
   });
 
-  app.get(
-    "/api/dash/seller",
-    [authJwt.verifyToken, authJwt.isSeller],
-    controller.sellerBoard
-  );
-  app.get(
-    "/api/dash/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
-    controller.adminBoard
-  );
+  app.get("/api/dash/seller", [authJwt.verifyToken, authJwt.isSeller]);
+  app.get("/api/dash/admin", [authJwt.verifyToken, authJwt.isAdmin]);
 };
